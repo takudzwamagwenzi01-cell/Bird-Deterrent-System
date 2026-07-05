@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <model name="bird_model">
+    <static>false</static>
+
+    <plugin name="bird_motion_plugin" filename="libgazebo_ros_planar_move.so">
+      <ros>
+        <namespace>/</namespace>
+        <remapping>cmd_vel:=/bird_model/cmd_vel</remapping>
+        <remapping>odom:=/bird_model/odom</remapping>
+      </ros>
+      <update_rate>100</update_rate>
+      <publish_rate>10</publish_rate>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>body</robot_base_frame>
+      <covariance_x>0.0001</covariance_x>
+      <covariance_y>0.0001</covariance_y>
+      <covariance_yaw>0.01</covariance_yaw>
+    </plugin>
+
+    <link name="body">
+      <pose>0 0 0.12 0 0 0</pose>
+      <inertial>
+        <mass>0.25</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <iyy>0.001</iyy>
+          <izz>0.001</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <collision name="body_collision">
+        <geometry>
+          <box>
+            <size>0.16 0.08 0.08</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="body_visual">
+        <geometry>
+          <box>
+            <size>0.16 0.08 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1.0</ambient>
+          <diffuse>0.25 0.25 0.25 1.0</diffuse>
+          <specular>0.2 0.2 0.2 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <link name="left_wing">
+      <pose>0.01 0.06 0.12 0 0 0.35</pose>
+      <inertial>
+        <mass>0.03</mass>
+        <inertia>
+          <ixx>0.00005</ixx>
+          <iyy>0.00005</iyy>
+          <izz>0.00002</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+      <visual name="left_wing_visual">
+        <geometry>
+          <box>
+            <size>0.10 0.02 0.06</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.22 0.22 0.22 1.0</ambient>
+          <diffuse>0.35 0.35 0.35 1.0</diffuse>
+          <specular>0.15 0.15 0.15 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <link name="right_wing">
+      <pose>0.01 -0.06 0.12 0 0 -0.35</pose>
+      <inertial>
+        <mass>0.03</mass>
+        <inertia>
+          <ixx>0.00005</ixx>
+          <iyy>0.00005</iyy>
+          <izz>0.00002</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+      <visual name="right_wing_visual">
+        <geometry>
+          <box>
+            <size>0.10 0.02 0.06</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.22 0.22 0.22 1.0</ambient>
+          <diffuse>0.35 0.35 0.35 1.0</diffuse>
+          <specular>0.15 0.15 0.15 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <link name="head">
+      <pose>0.09 0 0.16 0 0 0</pose>
+      <inertial>
+        <mass>0.08</mass>
+        <inertia>
+          <ixx>0.0002</ixx>
+          <iyy>0.0002</iyy>
+          <izz>0.0002</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <collision name="head_collision">
+        <geometry>
+          <sphere>
+            <radius>0.04</radius>
+          </sphere>
+        </geometry>
+      </collision>
+
+      <visual name="head_visual">
+        <geometry>
+          <sphere>
+            <radius>0.04</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>0.18 0.18 0.18 1.0</ambient>
+          <diffuse>0.3 0.3 0.3 1.0</diffuse>
+          <specular>0.2 0.2 0.2 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <link name="tail">
+      <pose>-0.10 0 0.12 0 0 0</pose>
+      <inertial>
+        <mass>0.04</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <iyy>0.0001</iyy>
+          <izz>0.0001</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <collision name="tail_collision">
+        <geometry>
+          <box>
+            <size>0.06 0.02 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="tail_visual">
+        <geometry>
+          <box>
+            <size>0.06 0.02 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.12 0.12 0.12 1.0</ambient>
+          <diffuse>0.2 0.2 0.2 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="body_to_left_wing_joint" type="fixed">
+      <parent>body</parent>
+      <child>left_wing</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <joint name="body_to_right_wing_joint" type="fixed">
+      <parent>body</parent>
+      <child>right_wing</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <joint name="body_to_head_joint" type="fixed">
+      <parent>body</parent>
+      <child>head</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <joint name="body_to_tail_joint" type="fixed">
+      <parent>body</parent>
+      <child>tail</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+  </model>
+</sdf>
