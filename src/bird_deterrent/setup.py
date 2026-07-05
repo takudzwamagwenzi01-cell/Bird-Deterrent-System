@@ -1,4 +1,4 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 
 package_name = 'bird_deterrent'
 
@@ -20,4 +20,9 @@ setup(
             'bird_motion_node = bird_motion_node:main',
         ],
     },
+    data_files=[
+        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/resource', ['resource/' + package_name]),
+    ],
 )
