@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <model name="bird_motion_sprinkler">
+    <!-- Motion sensor base platform that detects bird presence. -->
+    <link name="sensor_base">
+      <pose>0 0 0.08 0 0 0</pose>
+      <inertial>
+        <mass>6.5</mass>
+        <inertia>
+          <ixx>0.15</ixx>
+          <iyy>0.15</iyy>
+          <izz>0.10</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <collision name="base_collision">
+        <geometry>
+          <cylinder>
+            <radius>0.20</radius>
+            <length>0.16</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name="base_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.20</radius>
+            <length>0.16</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.2 0.5 0.2 1.0</ambient>
+          <diffuse>0.3 0.6 0.3 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- Fixed vertical support stem extending from the sensor base. -->
+    <link name="support_stem">
+      <pose>0 0 0.50 0 0 0</pose>
+      <inertial>
+        <mass>2.0</mass>
+        <inertia>
+          <ixx>0.015</ixx>
+          <iyy>0.015</iyy>
+          <izz>0.005</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <collision name="stem_collision">
+        <geometry>
+          <cylinder>
+            <radius>0.025</radius>
+            <length>0.84</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name="stem_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.025</radius>
+            <length>0.84</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1.0</ambient>
+          <diffuse>0.4 0.4 0.4 1.0</diffuse>
+          <specular>0.2 0.2 0.2 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- Rotating nozzle head that sprays water in a rotating pattern. -->
+    <link name="nozzle_head">
+      <pose>0 0 0.95 0 0 0</pose>
+      <inertial>
+        <mass>0.8</mass>
+        <inertia>
+          <ixx>0.002</ixx>
+          <iyy>0.005</iyy>
+          <izz>0.005</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <collision name="nozzle_collision">
+        <geometry>
+          <box>
+            <size>0.25 0.08 0.12</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="nozzle_visual">
+        <geometry>
+          <box>
+            <size>0.25 0.08 0.12</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1.0</ambient>
+          <diffuse>0.95 0.3 0.3 1.0</diffuse>
+          <specular>0.3 0.3 0.3 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- Spray outlet on the nozzle for water emission simulation. -->
+    <link name="spray_outlet">
+      <pose>0.15 0 0.95 0 0 0</pose>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <iyy>0.0001</iyy>
+          <izz>0.0001</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <collision name="outlet_collision">
+        <geometry>
+          <sphere>
+            <radius>0.015</radius>
+          </sphere>
+        </geometry>
+      </collision>
+
+      <visual name="outlet_visual">
+        <geometry>
+          <sphere>
+            <radius>0.015</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1.0</ambient>
+          <diffuse>0.7 0.7 0.7 1.0</diffuse>
+          <specular>0.4 0.4 0.4 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- Fixed joint connecting the sensor base to the support stem. -->
+    <joint name="base_to_stem_joint" type="fixed">
+      <parent>sensor_base</parent>
+      <child>support_stem</child>
+      <pose>0 0 -0.34 0 0 0</pose>
+    </joint>
+
+    <!-- Continuous revolute joint allowing the nozzle head to rotate around the vertical axis. -->
+    <joint name="stem_to_nozzle_joint" type="revolute">
+      <parent>support_stem</parent>
+      <child>nozzle_head</child>
+      <pose>0 0 -0.13 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-3.14159265</lower>
+          <upper>3.14159265</upper>
+          <effort>5.0</effort>
+          <velocity>1.5</velocity>
+        </limit>
+      </axis>
+      <dynamics>
+        <friction>0.8</friction>
+        <damping>0.2</damping>
+        <spring_reference>0</spring_reference>
+        <spring_stiffness>0</spring_stiffness>
+      </dynamics>
+    </joint>
+
+    <!-- Fixed joint attaching the spray outlet to the nozzle head. -->
+    <joint name="nozzle_to_outlet_joint" type="fixed">
+      <parent>nozzle_head</parent>
+      <child>spray_outlet</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+  </model>
+</sdf>

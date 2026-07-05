@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <model name="farm_fence">
+    <!-- A single fence segment with posts and rails. -->
+    <link name="fence_segment">
+      <pose>0 0 0.70 0 0 0</pose>
+      <inertial>
+        <mass>5.0</mass>
+        <inertia>
+          <ixx>0.10</ixx>
+          <iyy>0.10</iyy>
+          <izz>0.05</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <collision name="segment_collision">
+        <geometry>
+          <box>
+            <size>2.0 0.10 1.40</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <!-- Left post. -->
+      <visual name="post_left_visual">
+        <pose>-0.90 0 -0.05 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.08 0.08 1.20</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.45 0.30 0.15 1.0</ambient>
+          <diffuse>0.55 0.35 0.20 1.0</diffuse>
+          <specular>0.15 0.15 0.15 1.0</specular>
+        </material>
+      </visual>
+
+      <!-- Right post. -->
+      <visual name="post_right_visual">
+        <pose>0.90 0 -0.05 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.08 0.08 1.20</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.45 0.30 0.15 1.0</ambient>
+          <diffuse>0.55 0.35 0.20 1.0</diffuse>
+          <specular>0.15 0.15 0.15 1.0</specular>
+        </material>
+      </visual>
+
+      <!-- Top rail. -->
+      <visual name="rail_top_visual">
+        <pose>0 0 0.40 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.80 0.04 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.45 0.30 0.15 1.0</ambient>
+          <diffuse>0.55 0.35 0.20 1.0</diffuse>
+          <specular>0.15 0.15 0.15 1.0</specular>
+        </material>
+      </visual>
+
+      <!-- Middle rail. -->
+      <visual name="rail_middle_visual">
+        <pose>0 0 0.00 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.80 0.04 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.45 0.30 0.15 1.0</ambient>
+          <diffuse>0.55 0.35 0.20 1.0</diffuse>
+          <specular>0.15 0.15 0.15 1.0</specular>
+        </material>
+      </visual>
+
+      <!-- Bottom rail. -->
+      <visual name="rail_bottom_visual">
+        <pose>0 0 -0.40 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.80 0.04 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.45 0.30 0.15 1.0</ambient>
+          <diffuse>0.55 0.35 0.20 1.0</diffuse>
+          <specular>0.15 0.15 0.15 1.0</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

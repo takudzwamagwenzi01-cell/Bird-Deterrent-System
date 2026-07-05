@@ -1,0 +1,29 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# ROS build artifacts
+build/
+install/
+log/
+*.log
+*.bag
+*.db3
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Gazebo/ignition temporary files
+*.pcd
+
+# Local environment files
+.env
+.env.local

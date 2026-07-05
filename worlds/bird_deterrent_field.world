@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <world name="bird_deterrent_field">
+    <!-- Basic simulation settings for a stable outdoor field. -->
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>1000.0</real_time_update_rate>
+    </physics>
+
+    <gravity>0 0 -9.81</gravity>
+
+    <!-- Sunlight for the scene. -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Ground plane with a light green field appearance. -->
+    <model name="field_ground">
+      <static>true</static>
+      <link name="ground_link">
+        <pose>0 0 0 0 0 0</pose>
+        <collision name="ground_collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>60 60</size>
+            </plane>
+          </geometry>
+        </collision>
+
+        <visual name="ground_visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>60 60</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.15 0.45 0.15 1.0</ambient>
+            <diffuse>0.20 0.60 0.20 1.0</diffuse>
+            <specular>0.05 0.05 0.05 1.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Four crop quadrants separated by a central dirt path cross. -->
+    <model name="crop_quadrant_nw">
+      <static>true</static>
+      <link name="link">
+        <pose>-6.0 6.0 0.05 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10.0 10.0 0.10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10.0 10.0 0.10</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.16 0.50 0.16 1.0</ambient>
+            <diffuse>0.22 0.68 0.22 1.0</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="crop_rows_nw">
+      <static>true</static>
+      <link name="link">
+        <pose>-6.0 6.0 0.10 0 0 0</pose>
+        <visual name="row_1">
+          <pose>-2.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+        <visual name="row_2">
+          <pose>0.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+        <visual name="row_3">
+          <pose>2.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="crop_quadrant_ne">
+      <static>true</static>
+      <link name="link">
+        <pose>6.0 6.0 0.05 0 0 0</pose>
+        <collision name="collision">
+          <geometry><box><size>10.0 10.0 0.10</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>10.0 10.0 0.10</size></box></geometry>
+          <material><ambient>0.16 0.50 0.16 1.0</ambient><diffuse>0.22 0.68 0.22 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="crop_rows_ne">
+      <static>true</static>
+      <link name="link">
+        <pose>6.0 6.0 0.10 0 0 0</pose>
+        <visual name="row_1">
+          <pose>-2.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+        <visual name="row_2">
+          <pose>0.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+        <visual name="row_3">
+          <pose>2.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="crop_quadrant_sw">
+      <static>true</static>
+      <link name="link">
+        <pose>-6.0 -6.0 0.05 0 0 0</pose>
+        <collision name="collision">
+          <geometry><box><size>10.0 10.0 0.10</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>10.0 10.0 0.10</size></box></geometry>
+          <material><ambient>0.16 0.50 0.16 1.0</ambient><diffuse>0.22 0.68 0.22 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="crop_rows_sw">
+      <static>true</static>
+      <link name="link">
+        <pose>-6.0 -6.0 0.10 0 0 0</pose>
+        <visual name="row_1">
+          <pose>-2.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+        <visual name="row_2">
+          <pose>0.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+        <visual name="row_3">
+          <pose>2.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="crop_quadrant_se">
+      <static>true</static>
+      <link name="link">
+        <pose>6.0 -6.0 0.05 0 0 0</pose>
+        <collision name="collision">
+          <geometry><box><size>10.0 10.0 0.10</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>10.0 10.0 0.10</size></box></geometry>
+          <material><ambient>0.16 0.50 0.16 1.0</ambient><diffuse>0.22 0.68 0.22 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="crop_rows_se">
+      <static>true</static>
+      <link name="link">
+        <pose>6.0 -6.0 0.10 0 0 0</pose>
+        <visual name="row_1">
+          <pose>-2.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+        <visual name="row_2">
+          <pose>0.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+        <visual name="row_3">
+          <pose>2.0 0 0 0 0 0</pose>
+          <geometry><box><size>0.40 10.0 0.20</size></box></geometry>
+          <material><ambient>0.32 0.58 0.18 1.0</ambient><diffuse>0.42 0.72 0.24 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="dirt_path_horizontal">
+      <static>true</static>
+      <link name="link">
+        <pose>0.0 0.0 0.02 0 0 0</pose>
+        <collision name="collision">
+          <geometry><box><size>24.0 0.60 0.04</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>24.0 0.60 0.04</size></box></geometry>
+          <material><ambient>0.35 0.22 0.13 1.0</ambient><diffuse>0.45 0.28 0.17 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="dirt_path_vertical">
+      <static>true</static>
+      <link name="link">
+        <pose>0.0 0.0 0.02 0 0 0</pose>
+        <collision name="collision">
+          <geometry><box><size>0.60 24.0 0.04</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.60 24.0 0.04</size></box></geometry>
+          <material><ambient>0.35 0.22 0.13 1.0</ambient><diffuse>0.45 0.28 0.17 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="fence_north_south">
+      <static>true</static>
+      <link name="link">
+        <pose>0.0 12.0 0.60 0 0 0</pose>
+        <collision name="collision">
+          <geometry><box><size>24.0 0.20 1.20</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>24.0 0.20 1.20</size></box></geometry>
+          <material><ambient>0.45 0.30 0.15 1.0</ambient><diffuse>0.55 0.35 0.20 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="fence_south">
+      <static>true</static>
+      <link name="link">
+        <pose>0.0 -12.0 0.60 0 0 0</pose>
+        <collision name="collision">
+          <geometry><box><size>24.0 0.20 1.20</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>24.0 0.20 1.20</size></box></geometry>
+          <material><ambient>0.45 0.30 0.15 1.0</ambient><diffuse>0.55 0.35 0.20 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="fence_east">
+      <static>true</static>
+      <link name="link">
+        <pose>12.0 0.0 0.60 0 0 0</pose>
+        <collision name="collision">
+          <geometry><box><size>0.20 24.0 1.20</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.20 24.0 1.20</size></box></geometry>
+          <material><ambient>0.45 0.30 0.15 1.0</ambient><diffuse>0.55 0.35 0.20 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="fence_west">
+      <static>true</static>
+      <link name="link">
+        <pose>-12.0 0.0 0.60 0 0 0</pose>
+        <collision name="collision">
+          <geometry><box><size>0.20 24.0 1.20</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.20 24.0 1.20</size></box></geometry>
+          <material><ambient>0.45 0.30 0.15 1.0</ambient><diffuse>0.55 0.35 0.20 1.0</diffuse></material>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>

@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+
+<model name="crop_row">
+  <pose>0 0 0 0 0 0</pose>
+
+  <static>true</static>
+
+  <link name="plant">
+
+    <!-- Slight lean -->
+    <pose>0 0 0.60 0.04 -0.03 0</pose>
+
+    <inertial>
+      <mass>0.30</mass>
+      <inertia>
+        <ixx>0.001</ixx>
+        <iyy>0.001</iyy>
+        <izz>0.001</izz>
+      </inertia>
+    </inertial>
+
+    <!-- Simple collision -->
+    <collision name="collision">
+      <geometry>
+        <cylinder>
+          <radius>0.10</radius>
+          <length>1.20</length>
+        </cylinder>
+      </geometry>
+    </collision>
+
+    <!-- ========================= -->
+    <!-- Main stalk -->
+    <!-- ========================= -->
+
+    <visual name="stalk">
+
+      <geometry>
+        <cylinder>
+          <radius>0.020</radius>
+          <length>1.20</length>
+        </cylinder>
+      </geometry>
+
+      <material>
+        <ambient>0.32 0.58 0.18 1</ambient>
+        <diffuse>0.42 0.70 0.20 1</diffuse>
+      </material>
+
+    </visual>
+
+    <!-- ========================= -->
+    <!-- Leaves -->
+    <!-- ========================= -->
+
+    <visual name="leaf1">
+      <pose>0 0.10 -0.30 0 1.05 0</pose>
+      <geometry>
+        <box>
+          <size>0.42 0.018 0.040</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.18 0.42 0.15 1</ambient>
+        <diffuse>0.22 0.56 0.18 1</diffuse>
+      </material>
+    </visual>
+
+    <visual name="leaf2">
+      <pose>0 -0.10 -0.15 0 -1.05 3.14</pose>
+      <geometry>
+        <box>
+          <size>0.48 0.018 0.040</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.18 0.45 0.16 1</ambient>
+        <diffuse>0.24 0.60 0.20 1</diffuse>
+      </material>
+    </visual>
+
+    <visual name="leaf3">
+      <pose>0.08 0 0.00 0.35 1.10 1.57</pose>
+      <geometry>
+        <box>
+          <size>0.55 0.018 0.040</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.18 0.48 0.18 1</ambient>
+        <diffuse>0.26 0.64 0.24 1</diffuse>
+      </material>
+    </visual>
+
+    <visual name="leaf4">
+      <pose>-0.08 0 0.12 -0.35 -1.10 1.57</pose>
+      <geometry>
+        <box>
+          <size>0.60 0.018 0.040</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.20 0.50 0.18 1</ambient>
+        <diffuse>0.28 0.66 0.24 1</diffuse>
+      </material>
+    </visual>
+
+    <visual name="leaf5">
+      <pose>0 0.09 0.28 0 0.90 0.3</pose>
+      <geometry>
+        <box>
+          <size>0.55 0.016 0.035</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.22 0.54 0.22 1</ambient>
+        <diffuse>0.30 0.72 0.30 1</diffuse>
+      </material>
+    </visual>
+
+    <visual name="leaf6">
+      <pose>0 -0.09 0.42 0 -0.90 3.0</pose>
+      <geometry>
+        <box>
+          <size>0.50 0.016 0.035</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.20 0.52 0.20 1</ambient>
+        <diffuse>0.28 0.70 0.28 1</diffuse>
+      </material>
+    </visual>
+
+    <visual name="leaf7">
+      <pose>0.06 0 0.58 0.25 0.85 1.57</pose>
+      <geometry>
+        <box>
+          <size>0.42 0.015 0.030</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.24 0.60 0.22 1</ambient>
+        <diffuse>0.34 0.76 0.34 1</diffuse>
+      </material>
+    </visual>
+
+    <visual name="leaf8">
+      <pose>-0.06 0 0.70 -0.25 -0.85 1.57</pose>
+      <geometry>
+        <box>
+          <size>0.35 0.015 0.030</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0.24 0.60 0.24 1</ambient>
+        <diffuse>0.36 0.78 0.36 1</diffuse>
+      </material>
+    </visual>
+
+    <!-- ========================= -->
+    <!-- Seed Head -->
+    <!-- ========================= -->
+
+    <visual name="panicle_bottom">
+
+      <pose>0 0 0.88 0 0 0</pose>
+
+      <geometry>
+        <cone>
+          <radius>0.050</radius>
+          <length>0.12</length>
+        </cone>
+      </geometry>
+
+      <material>
+        <ambient>0.62 0.55 0.24 1</ambient>
+        <diffuse>0.74 0.66 0.30 1</diffuse>
+      </material>
+
+    </visual>
+
+    <visual name="panicle_top">
+
+      <pose>0 0 0.97 0 0 0</pose>
+
+      <geometry>
+        <sphere>
+          <radius>0.045</radius>
+        </sphere>
+      </geometry>
+
+      <material>
+        <ambient>0.70 0.60 0.30 1</ambient>
+        <diffuse>0.82 0.70 0.34 1</diffuse>
+      </material>
+
+    </visual>
+
+  </link>
+
+</model>
+
+</sdf>

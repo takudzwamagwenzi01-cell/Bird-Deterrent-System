@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <model name="bird_scare_post">
+    <!-- Main body of the deterrent post. -->
+    <link name="post_base">
+      <pose>0 0 0.15 0 0 0</pose>
+      <inertial>
+        <mass>8.0</mass>
+        <inertia>
+          <ixx>0.18</ixx>
+          <iyy>0.18</iyy>
+          <izz>0.12</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <collision name="base_collision">
+        <geometry>
+          <box>
+            <size>0.35 0.35 0.30</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="base_visual">
+        <geometry>
+          <box>
+            <size>0.35 0.35 0.30</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.35 0.35 0.35 1.0</ambient>
+          <diffuse>0.45 0.45 0.45 1.0</diffuse>
+          <specular>0.15 0.15 0.15 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- Vertical support that rises above the base. -->
+    <link name="post_support">
+      <pose>0 0 0.95 0 0 0</pose>
+      <inertial>
+        <mass>3.5</mass>
+        <inertia>
+          <ixx>0.04</ixx>
+          <iyy>0.04</iyy>
+          <izz>0.01</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <collision name="support_collision">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>1.20</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name="support_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>1.20</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1.0</ambient>
+          <diffuse>0.6 0.6 0.6 1.0</diffuse>
+          <specular>0.2 0.2 0.2 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- Warning panel attached near the top of the support. -->
+    <link name="warning_panel">
+      <pose>0.12 0 1.55 0 0 0</pose>
+      <inertial>
+        <mass>1.2</mass>
+        <inertia>
+          <ixx>0.008</ixx>
+          <iyy>0.006</iyy>
+          <izz>0.004</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <collision name="panel_collision">
+        <geometry>
+          <box>
+            <size>0.20 0.02 0.35</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="panel_visual">
+        <geometry>
+          <box>
+            <size>0.20 0.02 0.35</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1.0</ambient>
+          <diffuse>0.95 0.25 0.25 1.0</diffuse>
+          <specular>0.2 0.2 0.2 1.0</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- Fixed joint connecting the base to the support. -->
+    <joint name="base_to_support_joint" type="fixed">
+      <parent>post_base</parent>
+      <child>post_support</child>
+      <pose>0 0 -0.55 0 0 0</pose>
+    </joint>
+
+    <!-- Fixed joint connecting the support to the warning panel. -->
+    <joint name="support_to_panel_joint" type="fixed">
+      <parent>post_support</parent>
+      <child>warning_panel</child>
+      <pose>0 0 -0.15 0 0 0</pose>
+    </joint>
+  </model>
+</sdf>
