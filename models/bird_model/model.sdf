@@ -3,11 +3,11 @@
   <model name="bird_model">
     <static>false</static>
 
-    <plugin name="bird_motion_plugin" filename="libgazebo_ros_planar_move.so">
+    <plugin name="bird_motion_plugin_bird_model" filename="libgazebo_ros_planar_move.so">
       <ros>
-        <namespace>/</namespace>
-        <remapping>cmd_vel:=/bird_model/cmd_vel</remapping>
-        <remapping>odom:=/bird_model/odom</remapping>
+        <namespace>/bird_model</namespace>
+        <remapping>cmd_vel:=cmd_vel</remapping>
+        <remapping>odom:=odom</remapping>
       </ros>
       <update_rate>100</update_rate>
       <publish_rate>10</publish_rate>

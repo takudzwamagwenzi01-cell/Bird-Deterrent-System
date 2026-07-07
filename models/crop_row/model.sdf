@@ -167,10 +167,10 @@
       <pose>0 0 0.88 0 0 0</pose>
 
       <geometry>
-        <cone>
+        <cylinder>
           <radius>0.050</radius>
           <length>0.12</length>
-        </cone>
+        </cylinder>
       </geometry>
 
       <material>

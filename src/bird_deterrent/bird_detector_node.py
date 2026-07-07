@@ -11,7 +11,10 @@ from std_msgs.msg import String
 
 import sys
 
-sys.path.append(str(Path('/home/bird_deterrent_system/bird_deterrent_project').resolve()))
+external_project_path = str(Path('/home/bird_deterrent_system/bird_deterrent_project').resolve())
+if external_project_path not in sys.path:
+    sys.path.insert(0, external_project_path)
+
 from bird_deterrent import BirdDeterrentSystem
 
 

@@ -24,5 +24,11 @@ setup(
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/resource', ['resource/' + package_name]),
+        ('lib/' + package_name, [
+            'scripts/bird_detector_node',
+            'scripts/bird_motion_node',
+            'scripts/bird_detector_node_exec.py',
+            'scripts/bird_motion_node_exec.py',
+        ]),
     ],
 )
